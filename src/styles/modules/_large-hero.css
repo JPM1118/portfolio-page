@@ -1,0 +1,8 @@
+.large-hero{
+  display: flex;
+
+
+  &__name {
+    background-color: $lightGreen;
+  }
+}
