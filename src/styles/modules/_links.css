@@ -1,0 +1,14 @@
+.links {
+  position: static;
+  text-align: center;
+  width: 500px;
+  margin-top: 50px;
+
+  @mixin atLarge {
+    position: absolute;
+    text-align: center;
+    width: 500px;
+    left: 60px;
+    bottom: 130px;
+  }
+}
