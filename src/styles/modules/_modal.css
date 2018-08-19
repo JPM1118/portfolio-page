@@ -1,0 +1,98 @@
+.modal {
+  position: fixed;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.94);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.2);
+  transition: all 0.3s ease-out;
+
+  &--is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  &__close-modal {
+    font-size: 1.4rem;
+    color: $lightRed;
+    font-weight: 600;
+    position: relative;
+    left: 98%;
+    top: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__header {
+    background-color: $lightGreen;
+    margin-top: 5px;
+    margin-bottom: -10px;
+    border-radius: 5px;
+    h1 {
+      padding: 15px 0px 0px 20px;
+    }
+    h2 {
+      padding: 0px 0px 15px 20px;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__email-form {
+    width: 95%;
+    max-width: 750px;
+    margin: 50px auto 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    @mixin clearfix {
+    }
+  }
+  textarea {
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+  }
+
+  fieldset {
+    margin: 10px 1px;
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  input {
+    border-radius: 5px;
+    width: 200px;
+    padding: 5px 0px 5px 5px;
+  }
+
+  &__emphasis {
+    color: $lightRed;
+  }
+
+  &__send-btn {
+    border-radius: 5px;
+    padding: 0.75rem 0;
+    width: 150px;
+    float: right;
+    background-color: $lightRed;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

@@ -1,49 +1,62 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    scroll: './src/scroll.js'
+    app: "./src/index.js"
   },
   devServer: {
-    contentBase: './dist'
-  }, 
+    contentBase: "./dist"
+  },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
   },
   module: {
-    rules:[
+    rules: [
       {
         test: /\.css$/,
         use: [
-          'style-loader',
-          {loader: 'css-loader', options: {importLoaders: 1}},
-          'postcss-loader'
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader"
         ]
       },
       {
-        test:/\.js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: "babel-loader"
       },
       {
         test: /\.html$/,
-        use: ['html-loader']
+        use: ["html-loader"]
+      },
+      {
+        test: /\.svg$/,
+        exclude: /img/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "icon/",
+              publicPath: "icon/"
+            }
+          }
+        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
-            loader:'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'img/',
-              publicPath: 'img/'
+              name: "[name].[ext]",
+              outputPath: "img/",
+              publicPath: "img/"
             }
-          }  
+          }
         ]
       }
     ]
@@ -51,8 +64,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Jack's Portolio Page",
-      template: './src/template.html'
+      template: "./src/template.html"
     }),
-    new CleanWebpackPlugin(['dist'])
+    new CleanWebpackPlugin(["dist"])
   ]
 };
