@@ -4,10 +4,11 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: "./src/index.js"
+    app: "./src/index.js",
+    myWork: "./src/myWork.js"
   },
   devServer: {
-    contentBase: "./dist"
+    contentBase: path.join(__dirname, "../dist/")
   },
   output: {
     filename: "[name].bundle.js",
@@ -64,7 +65,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Jack's Portolio Page",
-      template: "./src/template.html"
+      template: "./src/html-templates/index-template.html",
+      chunks: ["app"],
+      filename: "index.html"
+    }),
+    new HtmlWebpackPlugin({
+      title: "Jack's Portolio Page",
+      myPageHeader: "My Work",
+      template: "./src/html-templates/my-work.html",
+      chunks: ["myWork"],
+      filename: "mywork.html"
     }),
     new CleanWebpackPlugin(["dist"])
   ]
