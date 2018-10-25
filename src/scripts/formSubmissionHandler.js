@@ -1,4 +1,4 @@
-export default (function formSubmit() {
+export default function formSubmit() {
   function validEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     return re.test(email);
@@ -129,4 +129,4 @@ export default (function formSubmit() {
       buttons[i].disabled = true;
     }
   }
-})();
+}

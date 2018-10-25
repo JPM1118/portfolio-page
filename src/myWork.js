@@ -1,3 +1,3 @@
 import "./styles/style.css";
-
-console.log("hello, from myWork.js");
+import opacityOnScroll from "./scripts/opacityOnScroll";
+opacityOnScroll();

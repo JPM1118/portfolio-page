@@ -13,10 +13,12 @@ class Modal {
   }
 
   openModal(e) {
+    this.modal.classList.remove("modal--is-hidden");
     this.modal.classList.add("modal--is-visible");
   }
 
   closeModal() {
+    this.modal.classList.add("modal--is-hidden");
     this.modal.classList.remove("modal--is-visible");
   }
 }

@@ -1,26 +1,23 @@
 .large-hero {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  position: relative;
-
   &__name {
+    position: relative;
+    left: 0;
+    top: 0;
     background-color: $lightGreen;
-    width: 100%;
+    width: 100vw;
     height: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     //box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 
     h1 {
-      font-size: 3.3rem;
+      font-size: 3.5em;
       color: black;
-      padding-left: 10px;
+      padding: 20px;
+      margin: 0;
     }
 
     @mixin atSmall {
-      height: 300px;
-
       h1 {
         font-size: 5rem;
       }
@@ -33,17 +30,20 @@
   }
 
   &__about-me {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     text-align: center;
     font-size: 1.2rem;
-    padding-left: 1rem;
+
     margin-top: 50px;
 
+    /* @mixin flexTrans {
+      margin-top: 200px;
+    } */
+
     @mixin atLarge {
-      width: 500px;
       text-align: center;
       font-size: 1.2rem;
-      padding-left: 1rem;
       margin-top: 200px;
     }
 
@@ -68,7 +68,7 @@
 
     &__text {
       line-height: 2em;
-      text-align: left;
+      text-align: center;
     }
   }
 }

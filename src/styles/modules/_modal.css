@@ -1,20 +1,27 @@
 .modal {
-  position: fixed;
-  z-index: 5;
-  background-color: rgba(255, 255, 255, 0.94);
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.2);
-  transition: all 0.3s ease-out;
-
   &--is-visible {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+    overflow: auto;
+    //transform: scale(1);
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-out;
+  }
+
+  &--is-hidden {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: -99999999px;
+    //transform: scale(1.2);
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.7s ease-out;
   }
 
   &__close-modal {
@@ -22,7 +29,7 @@
     color: $lightRed;
     font-weight: 600;
     position: relative;
-    left: 98%;
+    left: 96%;
     top: 0;
     margin-bottom: 5px;
     cursor: pointer;
@@ -48,12 +55,17 @@
   &__email-form {
     width: 95%;
     max-width: 750px;
-    margin: 50px auto 10px auto;
+    margin: 20px auto 10px auto;
     padding: 10px;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    overflow: none;
     @mixin clearfix {
+    }
+
+    @mixin atSmall {
+      margin: 50px auto 10px auto;
     }
   }
   textarea {
@@ -66,7 +78,9 @@
   fieldset {
     margin: 10px 1px;
     border-radius: 5px;
+    border: solid white;
     padding: 20px;
+    background-color: #eaeaea;
   }
 
   label {

@@ -1,6 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   entry: {
@@ -19,7 +22,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader"
         ]
@@ -32,20 +35,6 @@ module.exports = {
       {
         test: /\.html$/,
         use: ["html-loader"]
-      },
-      {
-        test: /\.svg$/,
-        exclude: /img/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-              outputPath: "icon/",
-              publicPath: "icon/"
-            }
-          }
-        ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -75,6 +64,9 @@ module.exports = {
       template: "./src/html-templates/my-work.html",
       chunks: ["myWork"],
       filename: "mywork.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css"
     }),
     new CleanWebpackPlugin(["dist"])
   ]
